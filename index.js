@@ -1,10 +1,13 @@
 require("dotenv").config();
 const express = require("express");
 const { PrismaClient } = require("@prisma/client");
+const cors = require("cors");
+
 
 const app = express();
 const prisma = new PrismaClient();
 const PORT = process.env.PORT || 3000;
+app.use(cors());
 
 // Route: Get all users
 app.get("/users", async (req, res) => {
@@ -20,3 +23,4 @@ app.get("/users", async (req, res) => {
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
+
